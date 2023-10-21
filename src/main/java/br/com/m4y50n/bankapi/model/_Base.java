@@ -2,29 +2,31 @@ package br.com.m4y50n.bankapi.model;
 
 import java.util.Date;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.*;
 
 @MappedSuperclass
-public class Base {
+public class _Base {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "DATE")
+    @CreationTimestamp
+    @Column(updatable = false)
     private Date created_at;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(columnDefinition = "DATE")
+    @UpdateTimestamp
+    @Column(updatable = false)
     private Date updated_at;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(columnDefinition = "DATE")
     private Date deleted_at;
 
-    @PrePersist
-    protected void onCreate() {
-        created_at = new Date();
+    public void onDelete() {
+        deleted_at = new Date();
     }
 
     public long getId() {
@@ -35,23 +37,11 @@ public class Base {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
-
     public Date getUpdated_at() {
         return updated_at;
     }
 
-    public void setUpdated_at(Date updated_at) {
-        this.updated_at = updated_at;
-    }
-
     public Date getDeleted_at() {
         return deleted_at;
-    }
-
-    public void setDeleted_at(Date deleted_at) {
-        this.deleted_at = deleted_at;
     }
 }
