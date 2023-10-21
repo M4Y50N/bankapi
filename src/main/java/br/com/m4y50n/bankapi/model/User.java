@@ -1,8 +1,5 @@
 package br.com.m4y50n.bankapi.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jakarta.persistence.*;
 
 @Entity
