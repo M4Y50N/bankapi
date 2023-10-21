@@ -5,13 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "accounts")
 public class Account extends Base {
-    public Account(AccountType type, Double balance, User user) {
-        this.type = type;
-        this.balance = balance;
-        this.user = user;
-    }
-
-    public enum AccountType {
+    private enum AccountType {
         CC,
         CP
     }
@@ -23,7 +17,17 @@ public class Account extends Base {
     private Double balance;
 
     @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
+
+    public Account(AccountType type, Double balance, User user) {
+        this.type = type;
+        this.balance = balance;
+        this.user = user;
+    }
+
+    public Account() {
+    }
 
     public AccountType getType() {
         return type;
