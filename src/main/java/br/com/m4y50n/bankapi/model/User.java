@@ -1,5 +1,8 @@
 package br.com.m4y50n.bankapi.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +19,12 @@ public class User extends Base {
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String password;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Account account;
+
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BusinessAccount> business_accounts = new ArrayList<>();
 
     public User(String name, String cpf, String email, String password) {
         this.name = name;
