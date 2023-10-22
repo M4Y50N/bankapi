@@ -42,9 +42,9 @@ public class AccountController {
     @PutMapping("/{id}")
     public ResponseEntity<Account> updateAccount(@RequestBody final Account accData, @PathVariable String id)
             throws Exception {
-        final Account account = accountService.updateAccount(accData, Long.parseLong(id));
+        final Account updatedAccount = accountService.updateAccount(accData, Long.parseLong(id));
 
-        return new ResponseEntity<Account>(account, HttpStatus.OK);
+        return new ResponseEntity<Account>(updatedAccount, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
