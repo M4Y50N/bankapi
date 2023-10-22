@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "accounts")
-public class Account extends Base {
+public class Account extends _Base {
     private enum AccountType {
         CC,
         CP
@@ -13,16 +13,15 @@ public class Account extends Base {
     @Enumerated(EnumType.STRING)
     private AccountType type;
 
-    @Column(columnDefinition = "DECIMAL(10, 2) DEFAULT 0")
+    @Column(columnDefinition = "DECIMAL DEFAULT 0.0")
     private Double balance;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
-    public Account(AccountType type, Double balance, User user) {
+    public Account(AccountType type, User user) {
         this.type = type;
-        this.balance = balance;
         this.user = user;
     }
 
