@@ -26,21 +26,22 @@ public class AccountService {
     }
 
     public Account retriveAccount(long id) throws Exception {
-        return accountRepository.findById(id).orElseThrow(() -> new Exception("Error: Account not find"));
+        return accountRepository.findById(id).orElseThrow(() -> new Exception("Error: Account not found"));
     }
 
     public Account updateAccount(Account accData, long id) throws Exception {
-        Account updatedAccount = accountRepository.findById(id)
-                .orElseThrow(() -> new Exception("Error: Account not find"));
+        Account foundAccount = accountRepository.findById(id)
+                .orElseThrow(() -> new Exception("Error: Account not found"));
 
-        updatedAccount.setType(accData.getType());
+        foundAccount.setType(accData.getType());
+        foundAccount.setUser(accData.getUser());
 
-        return accountRepository.save(updatedAccount);
+        return accountRepository.save(foundAccount);
     }
 
     public void deleteAccount(long id) throws Exception {
         Account foundAccount = accountRepository.findById(id)
-                .orElseThrow(() -> new Exception("Error: Account not find"));
+                .orElseThrow(() -> new Exception("Error: Account not found"));
 
         accountRepository.delete(foundAccount);
     }

@@ -27,11 +27,11 @@ public class UserService {
     }
 
     public User retriveUser(final long id) throws Exception {
-        return userRepository.findById(id).orElseThrow(() -> new Exception("Error: User not find"));
+        return userRepository.findById(id).orElseThrow(() -> new Exception("Error: User not found"));
     }
 
     public User updateUser(final User userData, final long id) throws Exception {
-        final User foundUser = userRepository.findById(id).orElseThrow(() -> new Exception("Error: User not find"));
+        final User foundUser = userRepository.findById(id).orElseThrow(() -> new Exception("Error: User not found"));
 
         foundUser.setName(userData.getName());
         foundUser.setCpf(userData.getCpf());
@@ -42,7 +42,7 @@ public class UserService {
     }
 
     public void deleteUser(final long id) throws Exception {
-        final User foundUser = userRepository.findById(id).orElseThrow(() -> new Exception("Error: User not find"));
+        final User foundUser = userRepository.findById(id).orElseThrow(() -> new Exception("Error: User not found"));
 
         // foundUser.onDelete();
         userRepository.delete(foundUser);

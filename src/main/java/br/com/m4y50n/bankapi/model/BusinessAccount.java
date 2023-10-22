@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "business_accounts")
 public class BusinessAccount extends _Base {
     @Column(length = 92, nullable = false)
-    private String bussiness_name;
+    private String bussinessName;
 
     @Column(columnDefinition = "DECIMAL DEFAULT 0.0")
     private Double balance;
@@ -21,8 +21,8 @@ public class BusinessAccount extends _Base {
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
-    public BusinessAccount(String bussiness_name, String role, String cnpj, User user) {
-        this.bussiness_name = bussiness_name;
+    public BusinessAccount(String bussinessName, String role, String cnpj, User user) {
+        this.bussinessName = bussinessName;
         this.role = role;
         this.cnpj = cnpj;
         this.user = user;
@@ -31,12 +31,12 @@ public class BusinessAccount extends _Base {
     public BusinessAccount() {
     }
 
-    public String getBussiness_name() {
-        return bussiness_name;
+    public String getBussinessName() {
+        return bussinessName;
     }
 
-    public void setBussiness_name(String bussiness_name) {
-        this.bussiness_name = bussiness_name;
+    public void setBussinessName(String bussinessName) {
+        this.bussinessName = bussinessName;
     }
 
     public String getRole() {
