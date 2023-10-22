@@ -13,7 +13,7 @@ public class BusinessAccountService {
     }
 
     public BusinessAccount createBusinessAccount(BusinessAccount busAccData) {
-        BusinessAccount createdBusinessAccount = new BusinessAccount(busAccData.getBussinessName(),
+        final BusinessAccount createdBusinessAccount = new BusinessAccount(busAccData.getBussinessName(),
                 busAccData.getRole(), busAccData.getCnpj(), busAccData.getUser());
 
         return businessAccountRepository.save(createdBusinessAccount);

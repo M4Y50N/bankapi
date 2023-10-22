@@ -16,7 +16,7 @@ public class AccountService {
     }
 
     public Account createAccount(Account accData) {
-        Account createdAccount = new Account(accData.getType(), accData.getUser());
+        final Account createdAccount = new Account(accData.getType(), accData.getUser());
 
         return accountRepository.save(createdAccount);
     }
@@ -30,7 +30,7 @@ public class AccountService {
     }
 
     public Account updateAccount(Account accData, long id) throws Exception {
-        Account foundAccount = accountRepository.findById(id)
+        final Account foundAccount = accountRepository.findById(id)
                 .orElseThrow(() -> new Exception("Error: Account not found"));
 
         foundAccount.setType(accData.getType());
@@ -40,7 +40,7 @@ public class AccountService {
     }
 
     public void deleteAccount(long id) throws Exception {
-        Account foundAccount = accountRepository.findById(id)
+        final Account foundAccount = accountRepository.findById(id)
                 .orElseThrow(() -> new Exception("Error: Account not found"));
 
         accountRepository.delete(foundAccount);
