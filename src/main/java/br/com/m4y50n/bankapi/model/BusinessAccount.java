@@ -8,7 +8,7 @@ public class BusinessAccount extends _Base {
     @Column(length = 92, nullable = false)
     private String bussinessName;
 
-    @Column(columnDefinition = "DECIMAL DEFAULT 0.0")
+    @Column(columnDefinition = "DECIMAL(10, 2) DEFAULT 0.0", nullable = false)
     private Double balance;
 
     @Column(length = 155, nullable = false)

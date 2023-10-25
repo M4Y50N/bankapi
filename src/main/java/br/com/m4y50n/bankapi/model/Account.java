@@ -13,7 +13,7 @@ public class Account extends _Base {
     @Enumerated(EnumType.STRING)
     private AccountType type;
 
-    @Column(columnDefinition = "DECIMAL DEFAULT 0.0")
+    @Column(columnDefinition = "DECIMAL(10, 2) DEFAULT 0.0", nullable = false)
     private Double balance;
 
     @OneToOne
