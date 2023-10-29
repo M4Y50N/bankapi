@@ -5,4 +5,9 @@ VALUES
 
 INSERT INTO "accounts" ("type", "balance", "user_id")
 VALUES
-    ('CC', 200.35, '2');
+    ('CC', 200.35, '2'),
+    ('CP', 150, '1');
+
+INSERT INTO "transactions" ("payer_id", "amount", "payee_id")
+VALUES
+    ('2', 150, '1');

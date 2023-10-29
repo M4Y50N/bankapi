@@ -1,47 +1,35 @@
 package br.com.m4y50n.bankapi.model;
 
-import java.util.Date;
-
-import org.hibernate.annotations.CreationTimestamp;
-
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "transaction")
-public class Transaction {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+@Table(name = "transactions")
+public class Transaction extends _Base {
+    @ManyToOne
+    @JoinColumn(name = "payer_id", referencedColumnName = "id", nullable = false)
+    private Account payer;
 
-    @Column(nullable = false)
-    private Long payee;
-
-    @Column(columnDefinition = "DECIMAL(10, 2)", nullable = false)
+    @Column(columnDefinition = "DECIMAL(10, 2) DEFAULT 0.0")
     private Double amount;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    private User payeer;
+    @JoinColumn(name = "payee_id", referencedColumnName = "id", nullable = false)
+    private Account payee;
 
-    @CreationTimestamp
-    @Column(updatable = false)
-    private Date transaction_date;
-
-    public Transaction(Long payee, Double amount, User payeer) {
-        this.payee = payee;
+    public Transaction(Account payer, Double amount, Account payee) {
+        this.payer = payer;
         this.amount = amount;
-        this.payeer = payeer;
+        this.payee = payee;
     }
 
-    public long getId() {
-        return id;
+    public Transaction() {
     }
 
-    public Long getPayee() {
+    public Account getPayee() {
         return payee;
     }
 
-    public void setPayee(Long payee) {
+    public void setPayee(Account payee) {
         this.payee = payee;
     }
 
@@ -53,15 +41,11 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public User getPayeer() {
-        return payeer;
+    public Account getPayer() {
+        return payer;
     }
 
-    public void setPayeer(User payeer) {
-        this.payeer = payeer;
-    }
-
-    public Date getTransaction_date() {
-        return transaction_date;
+    public void setPayer(Account payer) {
+        this.payer = payer;
     }
 }
