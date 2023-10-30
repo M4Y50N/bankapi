@@ -14,13 +14,13 @@ public class Account extends _Base {
     private AccountType type;
 
     @Column(columnDefinition = "DECIMAL(10, 2) DEFAULT 0.0")
-    private Double balance;
+    private double balance;
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
 
-    public Account(AccountType type, Double balance, User user) {
+    public Account(AccountType type, double balance, User user) {
         this.type = type;
         this.balance = balance;
         this.user = user;
@@ -29,11 +29,11 @@ public class Account extends _Base {
     public Account() {
     }
 
-    public Double getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 

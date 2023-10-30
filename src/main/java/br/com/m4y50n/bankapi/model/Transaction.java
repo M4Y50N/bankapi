@@ -10,13 +10,13 @@ public class Transaction extends _Base {
     private Account payer;
 
     @Column(columnDefinition = "DECIMAL(10, 2) DEFAULT 0.0")
-    private Double amount;
+    private double amount;
 
     @ManyToOne
     @JoinColumn(name = "payee_id", referencedColumnName = "id", nullable = false)
     private Account payee;
 
-    public Transaction(Account payer, Double amount, Account payee) {
+    public Transaction(Account payer, double amount, Account payee) {
         this.payer = payer;
         this.amount = amount;
         this.payee = payee;
@@ -33,11 +33,11 @@ public class Transaction extends _Base {
         this.payee = payee;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
