@@ -16,7 +16,7 @@ public class AccountService {
     }
 
     public Account createAccount(Account accData) {
-        final Account createdAccount = new Account(accData.getType(), accData.getUser());
+        final Account createdAccount = new Account(accData.getType(), accData.getBalance(), accData.getUser());
 
         return accountRepository.save(createdAccount);
     }

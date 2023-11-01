@@ -14,7 +14,7 @@ public class BusinessAccountService {
 
     public BusinessAccount createBusinessAccount(BusinessAccount busAccData) {
         final BusinessAccount createdBusinessAccount = new BusinessAccount(busAccData.getBussinessName(),
-                busAccData.getRole(), busAccData.getCnpj(), busAccData.getUser());
+                busAccData.getRole(), busAccData.getCnpj(), null);
 
         return businessAccountRepository.save(createdBusinessAccount);
     }
@@ -23,7 +23,7 @@ public class BusinessAccountService {
         return businessAccountRepository.findAll();
     }
 
-    public BusinessAccount retrivBusinessAccount(long id) throws Exception {
+    public BusinessAccount retriveBusinessAccount(long id) throws Exception {
         return businessAccountRepository.findById(id)
                 .orElseThrow(() -> new Exception("Error: Business Account not found"));
     }
@@ -35,7 +35,6 @@ public class BusinessAccountService {
         foundBusAcc.setBussinessName(busAccData.getBussinessName());
         foundBusAcc.setRole(busAccData.getRole());
         foundBusAcc.setCnpj(busAccData.getCnpj());
-        foundBusAcc.setUser(busAccData.getUser());
 
         return businessAccountRepository.save(foundBusAcc);
     }

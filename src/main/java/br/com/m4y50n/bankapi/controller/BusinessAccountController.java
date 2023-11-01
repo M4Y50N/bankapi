@@ -32,7 +32,7 @@ public class BusinessAccountController {
 
     @GetMapping("/{id}")
     public ResponseEntity<BusinessAccount> retriveBusinessAccount(@PathVariable String id) throws Exception {
-        final BusinessAccount businessAccount = businessAccountService.retrivBusinessAccount(Long.parseLong(id));
+        final BusinessAccount businessAccount = businessAccountService.retriveBusinessAccount(Long.parseLong(id));
 
         return new ResponseEntity<BusinessAccount>(businessAccount, HttpStatus.OK);
     }
